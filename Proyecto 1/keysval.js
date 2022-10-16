@@ -5,11 +5,12 @@
 let keys=[]
 let values1=[]
 const object1 = {
-    a: 'somestring',
-    b: 42,
     c: false,
     d: 42,
-    f: false
+    f: false,
+    a: 'somestring',
+    b: 42
+    
   };
 //assignation to array keys and array values and number of columns
 keys=Object.keys(object1)
@@ -17,6 +18,19 @@ values1=Object.values(object1)
 columns=keys.length
 //concatenate keys and values in one array/matrix
 function keysAndValues(object1){ 
+  var aux,auxv;
+  for(var i=0;i<columns;i++){
+    for(var j=0;j<columns;j++){
+      if(keys[j]>keys[j+1]){
+        aux=keys[j+1]
+        auxv=values1[j+1]
+        keys[j+1]=keys[j]
+        values1[j+1]=values1[j]
+        keys[j]=aux
+        values1[j]=auxv
+      }
+    }
+  }
   let array=[keys,values1]
   return array
 }
